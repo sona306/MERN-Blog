@@ -13,16 +13,6 @@ const Sign = () => {
     }
     const readValue=()=>{
         console.log(signin)
-        axios.post("http://localhost:8088/signin",signin).then(
-            (response)=>{
-                console.log(response.data)
-                if (response.data.status=="success") {
-                    alert("Sucessfully added")
-                } else {
-                    alert("error!")
-                }
-            }
-        ).catch()
     }
   return (
     <div>
