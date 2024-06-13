@@ -1,4 +1,6 @@
+import axios from 'axios'
 import React, { useState } from 'react'
+import Nav from './Nav'
 
 const Up = () => {
 
@@ -14,9 +16,23 @@ const Up = () => {
     }
     const readValue=()=>{
         console.log(signup)
+        axios.post("http://localhost:8088/signup",signup).then(
+            (response)=>{
+                console.log(response.data)
+                if (response.data.status=="success") 
+                    {
+                    alert("Sucessfully added")
+                    } 
+                else 
+                {
+                    alert("Failed")
+                }
+            }
+        ).catch()  
     }
   return (
     <div>
+        <Nav/>
         <container>
             <div className="row">
                 <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
@@ -37,7 +53,8 @@ const Up = () => {
                             <button className="btn btn-primary" onClick={readValue} >Register</button>
                         </div>
                         <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12"><br></br>
-                        <button className="btn btn-warning" >Back signIN</button>
+
+                        <button className="btn btn-warning">Back signIN</button>
                         </div>
                     </row>
                 </div>
